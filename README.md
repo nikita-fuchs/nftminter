@@ -1,0 +1,2 @@
+# nftminter
+aeternity nft minter
