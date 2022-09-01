@@ -59,6 +59,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private breakpointService: NbMediaBreakpointsService,
     private rippleService: RippleService,
   ) {
+
+    
+      this.themeService.changeTheme("material-dark");
+    
+
     this.materialTheme$ = this.themeService.onThemeChange()
       .pipe(map(theme => {
         const themeName: string = theme?.name || '';
@@ -67,7 +72,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.currentTheme = this.themeService.currentTheme;
+    //this.currentTheme = this.themeService.currentTheme;
+    this.currentTheme = "dark";
 
     this.userService.getUsers()
       .pipe(takeUntil(this.destroy$))

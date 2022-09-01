@@ -9,6 +9,7 @@ import {
   NbRadioModule,
   NbSelectModule,
   NbUserModule,
+  NbPopoverModule
 } from '@nebular/theme';
 
 import { ThemeModule } from '../../@theme/theme.module';
@@ -32,6 +33,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ReactiveFormsModule } from '@angular/forms';
+/* import { SecurityCamerasComponent } from './security-cameras/security-cameras.component'; */
+import { DashboardModule } from '../dashboard/dashboard.module'
+//import { SecurityCamerasComponent } from '../dashboard/dashboard.module'
+
 
 const materialModules = [
   MatFormFieldModule,
@@ -48,6 +54,8 @@ const materialModules = [
 
 @NgModule({
   imports: [
+    ReactiveFormsModule,
+    NbPopoverModule,
     ThemeModule,
     NbInputModule,
     NbCardModule,
@@ -61,6 +69,7 @@ const materialModules = [
     NbSelectModule,
     NbIconModule,
     ngFormsModule,
+    DashboardModule,
     ...materialModules,
   ],
   declarations: [

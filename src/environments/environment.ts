@@ -10,4 +10,8 @@
 
 export const environment = {
   production: false,
+  networkId: 'ae_uat',
+  nodeUrl: 'https://testnet.aeternity.io',
+  nodeCompilerUrl: 'https://compiler.aepps.com',
+  projectName: 'Aeternity NFT minter',
 };

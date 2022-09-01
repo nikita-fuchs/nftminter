@@ -2,7 +2,30 @@
 @import '~@nebular/theme/styles/global/breakpoints';
 @import '~bootstrap/scss/mixins/breakpoints';
 
+/* centering the preview */
+:host {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 767px)  {
+  :host {
+  width: -webkit-fill-available;
+      margin-left: 1rem;
+      margin-right: 1rem;
+  }
+}
+
 @include nb-install-component() {
+  .noPadding {
+    padding-left:0;
+    padding-right:0
+  }
+
+  .hideFooter {
+    height: 0px;
+    padding: 0rem 1.5rem;
+  }
 
   nb-card-header {
     display: flex;

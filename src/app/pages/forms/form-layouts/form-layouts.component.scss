@@ -1,3 +1,45 @@
+
+.slideUp {
+  animation: dataCardSlideIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0s 1 normal forwards;
+}
+
+@keyframes dataCardSlideIn {
+	0% {
+		opacity: 0;
+		transform: translateY(250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
+
+.slideLeft {
+  animation: dataCardSlideLeft 2s cubic-bezier(0.16, 1, 0.3, 1) 0s 1 normal forwards;
+}
+
+@keyframes dataCardSlideLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+
+
+
+.leaveSpaceForHelp {
+  max-width: 65%;
+}
+
 nb-checkbox {
   margin-bottom: 1rem;
 }
@@ -12,4 +54,9 @@ nb-checkbox {
 
 nb-card.inline-form-card nb-card-body {
   padding-bottom: 0;
+}
+
+.centerIcon{
+  transform: translateX(-0.3rem);
+  margin: auto !important;
 }
