@@ -5,6 +5,6 @@
 ## Installation
 ```
 nvm use 14
-npm install
+npm install --force
 ng serve
 ```
