@@ -6,7 +6,7 @@ import {
   BrowserWindowMessageConnection,
   SUBSCRIPTION_TYPES,
 } from '@aeternity/aepp-sdk';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 const { projectName, networkId, nodeUrl, nodeCompilerUrl } =
   environment;
 

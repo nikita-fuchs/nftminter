@@ -3,6 +3,7 @@ import { Camera, SecurityCamerasData } from '../../../@core/data/security-camera
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AeternityService } from '../../../services/aeternity.service';
 
 @Component({
   selector: 'ngx-form-layouts',
@@ -38,6 +39,7 @@ export class FormLayoutsComponent {
 
   constructor(
     private securityCamerasService: SecurityCamerasData,
+    private aeService: AeternityService 
   ){
     this.isSingleView = true;
   }

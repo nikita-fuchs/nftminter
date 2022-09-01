@@ -10,8 +10,10 @@
     "experimentalDecorators": true,
     "target": "es2015",
     "typeRoots": [
-      "node_modules/@types"
+      "node_modules/@types",
+      "node_modules/@aeternity/aepp-sdk/src/typings"
     ],
+    "allowSyntheticDefaultImports": true,
     "lib": [
       "es2017",
       "dom"

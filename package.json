@@ -29,6 +29,7 @@
     "postinstall": "ngcc --properties es2015 es5 browser module main --first-only --create-ivy-entry-points --tsconfig \"./src/tsconfig.app.json\""
   },
   "dependencies": {
+    "@aeternity/aepp-sdk": "^12.1.3",
     "@akveo/ng2-completer": "^9.0.1",
     "@angular/animations": "^12.1.0",
     "@angular/cdk": "12.1.0",
