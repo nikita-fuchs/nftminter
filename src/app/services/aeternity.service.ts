@@ -14,7 +14,7 @@ const { projectName, networkId, nodeUrl, nodeCompilerUrl } =
   providedIn: 'root',
 })
 export class AeternityService {
-  aeSdk?: AeSdkAepp;
+  aeSdk?: any;
 
   constructor() { }
 
