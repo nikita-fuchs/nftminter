@@ -35,6 +35,7 @@ export class FormLayoutsComponent {
   nftBaseUrl : string;
   nftSymbol : string;
 
+  aeSdk : any
   /* dApp related end  */
 
   constructor(
@@ -42,6 +43,16 @@ export class FormLayoutsComponent {
     private aeService: AeternityService 
   ){
     this.isSingleView = true;
+
+    const onNetworkChange = (params : any ) => {
+      // TODO: Make a toast for network changes
+      console.log("Network change:", params.networkId);
+    };
+    aeService.initSDK(onNetworkChange)
+      .then(({walletNetworkId, aeSdk} : {walletNetworkId: string, aeSdk: any}) => {
+        this.aeSdk = aeSdk;
+        // this.showWalletInfo(walletNetworkId);
+    });
   }
 
   ngOnInit() {
