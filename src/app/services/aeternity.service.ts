@@ -5,7 +5,7 @@ import {
   walletDetector,
   BrowserWindowMessageConnection,
   SUBSCRIPTION_TYPES,
-} from '@aeternity/aepp-sdk';
+} from '@aeternity/aepp-sdk/dist/aepp-sdk.browser.js';
 import { environment } from '../../environments/environment';
 const { projectName, networkId, nodeUrl, nodeCompilerUrl } =
   environment;
