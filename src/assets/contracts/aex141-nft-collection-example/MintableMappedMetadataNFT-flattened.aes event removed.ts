@@ -22,11 +22,6 @@ contract interface IAEX141 =
         , base_url: option(string)
         , metadata_type : metadata_type }
 
-    datatype event 
-        = Transfer(address, address, int)
-        | Approval(address, address, int, string)
-        | ApprovalForAll(address, address, string)
-
     entrypoint aex141_extensions : () => list(string)
     entrypoint meta_info : () => meta_info
     entrypoint metadata : (int) => option(metadata)
