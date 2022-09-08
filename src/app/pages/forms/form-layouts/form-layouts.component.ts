@@ -49,9 +49,11 @@ export class FormLayoutsComponent {
       console.log("Network change:", params.networkId);
     };
     aeService.initSDK(onNetworkChange)
-      .then(({walletNetworkId, aeSdk} : {walletNetworkId: string, aeSdk: any}) => {
+      .then( async ({walletNetworkId, aeSdk} : {walletNetworkId: string, aeSdk: any}) => {
         this.aeSdk = aeSdk;
-        // this.showWalletInfo(walletNetworkId);
+        console.log("Initialised sdk");
+        const test = await this.aeService.showWalletInfo(walletNetworkId);
+
     });
   }
 
