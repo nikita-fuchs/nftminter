@@ -15,12 +15,23 @@
             
           <!-- symbol -->
           <div class="form-group row">
-            <label for="inputnftSymbol1" class="label col-sm-3 col-form-label">Symbol</label>
+            <label for="inputnftSymbol" class="label col-sm-3 col-form-label">Symbol</label>
             <div class="col-sm-9 leaveSpaceForHelp">
               <input type="text" formControlName="nftSymbol" name="nftSymbol"  nbInput fullWidth id="inputnftSymbol" placeholder="Short Symbol of your NFT">
             </div>
             <nb-icon class="centerIcon" [icon]="'question-mark-circle-outline'" pack="eva" nbPopover="Pick an iconic symbol for your NFT, e.g. XZY " nbPopoverTrigger="hover" nbPopoverPlacement="right"></nb-icon>
           </div>
+
+          <!-- description -->
+          <div class="form-group row">
+            <label for="inputnftDescription" class="label col-sm-3 col-form-label">Description</label>
+            <div class="col-sm-9 leaveSpaceForHelp">
+              <input type="text" formControlName="nftDescription" name="nftSymbol"  nbInput fullWidth id="inputnftDescription" placeholder="Short Description">
+            </div>
+            <nb-icon class="centerIcon" [icon]="'question-mark-circle-outline'" pack="eva" nbPopover="This will be included into the transaction. Keep it short! " nbPopoverTrigger="hover" nbPopoverPlacement="right"></nb-icon>
+          </div>
+          
+
           <!-- base url -->
           <div class="form-group row">
             <label for="inputnftBaseUrl1" class="label col-sm-3 col-form-label">Base Url</label>
@@ -58,7 +69,7 @@
           
           <div class="form-group row">
             <div class="offset-sm-3 col-sm-9">
-              <button type="submit" [disabled]="!nftData.valid" nbButton status="primary">Mint</button>
+              <button type="submit" [disabled]="!nftData.valid" (click)="mint()" nbButton status="primary">Mint</button>
             </div>
           </div>
 

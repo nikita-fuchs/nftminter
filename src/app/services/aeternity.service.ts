@@ -22,7 +22,7 @@ const { projectName, networkId, nodeUrl, nodeCompilerUrl } =
 })
 export class AeternityService {
   aeSdk?: AeSdkAepp;
-  resObj: {
+  sdkState: {
     error?: string,
     address?: `ak_${string}`,
     balance?: string,
@@ -44,23 +44,23 @@ export class AeternityService {
   async showWalletInfo(walletNetworkId: string) {
     
     if (walletNetworkId !== networkId) {
-      this.resObj.error = `Connected to the wrong network "${walletNetworkId}". please switch to "${networkId}" in your wallet.`;
+      this.sdkState.error = `Connected to the wrong network "${walletNetworkId}". please switch to "${networkId}" in your wallet.`;
       this.status = WalletConnectionStatus.Error;
       return;
     }
     if (this.aeSdk == null) {
-      this.resObj.error = `SDK instance is not ready yet.`;
+      this.sdkState.error = `SDK instance is not ready yet.`;
       this.status = WalletConnectionStatus.Error;
       return;
     }
 
-    this.resObj.address = await this.aeSdk.address();
-    this.resObj.balance = await this.aeSdk.getBalance(this.resObj.address, {
+    this.sdkState.address = await this.aeSdk.address();
+    this.sdkState.balance = await this.aeSdk.getBalance(this.sdkState.address, {
       format: AE_AMOUNT_FORMATS.AE,
     });
-    this.resObj.height = await this.aeSdk.height();
-    console.log(this.resObj);
-    // this.resObj.nodeUrl = (await this.aeSdk.getNodeInfo()).url;
+    this.sdkState.height = await this.aeSdk.height();
+    console.log(this.sdkState);
+    // this.sdkState.nodeUrl = (await this.aeSdk.getNodeInfo()).url;
     this.status = WalletConnectionStatus.Connected;
   }
 
