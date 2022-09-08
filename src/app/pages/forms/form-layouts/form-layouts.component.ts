@@ -108,10 +108,8 @@ export class FormLayoutsComponent {
 
     console.log("Compiling....");
     const contract = await this.aeSdk.getContractInstance({ source });
-
     // deploy
     console.log("Deploying with: ",this.nftData.get('nftBaseUrl').value, this.nftData.get('nftSymbol').value);
-    debugger
     await contract.deploy([
       this.nftData.get('nftBaseUrl').value,
       this.nftData.get('nftSymbol').value
