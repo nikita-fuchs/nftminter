@@ -55,15 +55,11 @@ export class AeternityService {
     }
 
     this.resObj.address = await this.aeSdk.address();
-    debugger
     this.resObj.balance = await this.aeSdk.getBalance(this.resObj.address, {
       format: AE_AMOUNT_FORMATS.AE,
     });
-    debugger
     this.resObj.height = await this.aeSdk.height();
-    debugger
     console.log(this.resObj);
-    debugger
     // this.resObj.nodeUrl = (await this.aeSdk.getNodeInfo()).url;
     this.status = WalletConnectionStatus.Connected;
   }
