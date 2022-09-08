@@ -11,7 +11,7 @@
 export const environment = {
   production: false,
   networkId: 'ae_mainnet',
-  nodeUrl: 'https://testnet.aeternity.io',
+  nodeUrl: 'https://mainnet.aeternity.io',
   nodeCompilerUrl: 'https://compiler.aepps.com',
   projectName: 'Aeternity NFT minter',
 };

@@ -71,13 +71,13 @@ export class AeternityService {
   async initSDK(onNetworkChange: any) {
     this.aeSdk = new AeSdkAepp({
       name: projectName,
-      // nodes: [
-      //   {
-      //     name: networkId,
-      //     instance: new Node(nodeUrl),
-      //     // instance: new Node('http://dontfetchme.de'),
-      //   },
-      // ],
+      nodes: [
+        {
+          name: networkId,
+          instance: new Node(nodeUrl),
+          // instance: new Node('http://dontfetchme.de'),
+        },
+      ],
       compilerUrl: nodeCompilerUrl,
       onAddressChange:  ({ current }) => console.log('new address'),
       onNetworkChange,
