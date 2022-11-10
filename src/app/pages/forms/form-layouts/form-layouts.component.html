@@ -1,4 +1,204 @@
 <div class="row">
+  <div class="col-md-6">
+    <nb-card class="slideUp">
+      <nb-card-header>Data and Options</nb-card-header>
+      <nb-card-body>
+        <form [formGroup]="nftData">
+          <!-- name -->
+          <div class="form-group row">
+            <label for="inputnftName1" class="label col-sm-3 col-form-label">Name</label>
+            <div class="col-sm-9 leaveSpaceForHelp">
+              <input formControlName="nftName" name="nftName" type="text" nbInput fullWidth id="inputnftName1" placeholder="The Name of your NFT">
+            </div> 
+            <nb-icon class="centerIcon" [icon]="'question-mark-circle-outline'" pack="eva" nbPopover="Enter a Name for your NFT. E.g. 'TurboApe' " nbPopoverTrigger="hover" nbPopoverPlacement="right"></nb-icon>
+          </div>
+            
+          <!-- symbol -->
+          <div class="form-group row">
+            <label for="inputnftSymbol" class="label col-sm-3 col-form-label">Symbol</label>
+            <div class="col-sm-9 leaveSpaceForHelp">
+              <input type="text" formControlName="nftSymbol" name="nftSymbol"  nbInput fullWidth id="inputnftSymbol" placeholder="Short Symbol of your NFT">
+            </div>
+            <nb-icon class="centerIcon" [icon]="'question-mark-circle-outline'" pack="eva" nbPopover="Pick an iconic symbol for your NFT, e.g. XZY " nbPopoverTrigger="hover" nbPopoverPlacement="right"></nb-icon>
+          </div>
+
+          <!-- description -->
+          <div class="form-group row">
+            <label for="inputnftDescription" class="label col-sm-3 col-form-label">Description</label>
+            <div class="col-sm-9 leaveSpaceForHelp">
+              <input type="text" formControlName="nftDescription" name="nftSymbol"  nbInput fullWidth id="inputnftDescription" placeholder="Short Description">
+            </div>
+            <nb-icon class="centerIcon" [icon]="'question-mark-circle-outline'" pack="eva" nbPopover="This will be included into the transaction. Keep it short! " nbPopoverTrigger="hover" nbPopoverPlacement="right"></nb-icon>
+          </div>
+          
+
+          <!-- base url -->
+          <div class="form-group row">
+            <label for="inputnftBaseUrl1" class="label col-sm-3 col-form-label">Base Url</label>
+            <div class="col-sm-9 leaveSpaceForHelp">
+              <input type="url" formControlName="nftBaseUrl" name="nftBaseUrl" nbInput fullWidth id="inputnftBaseUrl" placeholder="Link to image to be minted into NFT">
+            </div>
+            <nb-icon class="centerIcon" [icon]="'question-mark-circle-outline'" pack="eva" nbPopover="A link to the image of your NFT. Depending on your hosting service, the preview might not work." nbPopoverTrigger="hover" nbPopoverPlacement="right"></nb-icon>
+          </div>
+
+          <!-- NFT type  -->
+          <!-- <div class="form-group row">
+            <label for="inputnftBaseUrl1" class="label col-sm-3 col-form-label">Data Type</label>
+            <div class="col-sm-9">
+
+              <nb-select matRipple selected="1">
+                <nb-option matRipple value="1">URL</nb-option>
+                <nb-option matRipple value="2">IPFS</nb-option>
+                <nb-option matRipple value="2">Object ID</nb-option>
+                <nb-option matRipple value="2">Map</nb-option>
+              </nb-select>
+    
+            </div>
+          </div> -->
+
+          <!-- Contract type. -->
+<!--           <div class="form-group row">
+            <label class="col-sm-3 label">Contract Type</label>
+            <div class="col-sm-9">
+              <nb-radio-group name="contractTypeOption" [(value)]="contractTypeOption" >
+                <nb-radio *ngFor="let option of contractTypes" [value]="option.value" [checked]="option.checked">{{ option.label}}</nb-radio>
+
+              </nb-radio-group>
+            </div>
+          </div> -->
+          
+          <div class="form-group row">
+            <div class="offset-sm-3 col-sm-9">
+              <button type="submit" 
+              [disabled]="!nftData.valid || showSpinnerOnMintButton" 
+              (click)="mint()" 
+              nbButton status="primary"
+              nbButton 
+              matRipple 
+              status="primary" 
+              size="large" 
+              [nbSpinner]="showSpinnerOnMintButton" 
+              nbSpinnerStatus="primary" 
+              nbSpinnerSize="large" 
+              nbSpinnerMessage=""
+              >Mint</button>
+            </div>
+          </div>
+
+        </form>
+
+      </nb-card-body>
+    </nb-card>
+    
+    <!-- Success notification-->
+    <div *ngIf="this.aeService.deployedNftAddress != ''" class="slideUpNotification" >
+    <!-- <div *ngIf="true" class="slideUpNotification" > -->
+      <ngx-status-card [title]="'NFT MINTED !'" [type]="'success'">
+        <!-- <i [ngClass]="'nb-checkmark'"></i> -->
+        Your NFT has successfully been <br> minted to the Blockchain! 
+      </ngx-status-card>
+    </div>
+  
+
+  </div>
+
+
+ <!-- NFT Preview -->
+  <ngx-security-cameras class="centerPreview slideLeft" [nftBaseUrl]="this.nftData.get('nftBaseUrl').value" [nftName]="this.nftData.get('nftName').value" ></ngx-security-cameras>
+
+
+
+  <!-- <nb-card size="giant">
+
+    <nb-card-header>
+      Security Cameras
+  
+      <button class="single-view-button"
+              nbButton
+              size="small"
+              [appearance]="isSingleView ? 'filled' : 'outline'"
+              (click)="isSingleView = true">
+        <i class="nb-square"></i>
+      </button>
+      <button class="grid-view-button"
+              nbButton
+              size="small"
+              [appearance]="isSingleView ? 'outline' : 'filled'"
+              (click)="isSingleView = false">
+        <nb-icon icon="grid" pack="eva"></nb-icon>
+      </button>
+    </nb-card-header>
+  
+    <div class="grid-container">
+  
+      <div class="single-view" *ngIf="isSingleView">
+        <div class="camera single" [style.background-image]="'url(' + selectedCamera.source + ')'">
+          <span class="camera-name">{{ selectedCamera.title }}</span>
+        </div>
+      </div>
+  
+      <div class="grid-view" *ngIf="!isSingleView">
+        <div class="camera"
+             *ngFor="let camera of cameras"
+             [style.background-image]="'url(' + camera.source + ')'"
+             (click)="selectCamera(camera)">
+          <span class="camera-name">{{ camera.title }}</span>
+        </div>
+      </div>
+  
+    </div>
+  
+    <nb-card-footer>
+      <nb-actions [size]="actionSize" fullWidth>
+        <nb-action matRipple>
+          <nb-icon icon="pause-circle-outline" pack="eva"></nb-icon>
+          Pause
+        </nb-action>
+        <nb-action matRipple>
+          <nb-icon icon="list-outline" pack="eva"></nb-icon>
+          Logs
+        </nb-action>
+        <nb-action matRipple>
+          <nb-icon icon="search-outline" pack="eva"></nb-icon>
+          Search
+        </nb-action>
+        <nb-action matRipple>
+          <nb-icon icon="settings-2-outline" pack="eva"></nb-icon>
+          Setup
+        </nb-action>
+      </nb-actions>
+    </nb-card-footer>
+  </nb-card> -->
+  
+
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!---- code end, demo block start-->
+<!-- 
+<div class="row">
   <div class="col-md-12">
     <nb-card class="inline-form-card">
       <nb-card-header>Inline form</nb-card-header>
@@ -35,7 +235,7 @@
           <div class="form-group row">
             <label class="col-sm-3 label">Radios</label>
             <div class="col-sm-9">
-              <nb-radio-group>
+              <nb-radio-group onChange="log($event)">
                 <nb-radio>Option 1</nb-radio>
                 <nb-radio>Option 2</nb-radio>
                 <nb-radio disabled>Disabled Option</nb-radio>
@@ -162,4 +362,4 @@
       </nb-card-body>
     </nb-card>
   </div>
-</div>
+</div> -->

@@ -4,7 +4,7 @@ import {
   NbButtonModule,
   NbCardModule,
   NbTabsetModule,
-  NbUserModule,
+  NbUserModule, NbLayoutModule, NbPopoverModule,
   NbRadioModule,
   NbSelectModule,
   NbListModule,
@@ -34,6 +34,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     FormsModule,
+    NbPopoverModule,
     ThemeModule,
     NbCardModule,
     NbUserModule,
@@ -46,6 +47,7 @@ import { FormsModule } from '@angular/forms';
     NbIconModule,
     NbButtonModule,
     NgxEchartsModule,
+    NbLayoutModule
   ],
   declarations: [
     DashboardComponent,
@@ -64,6 +66,9 @@ import { FormsModule } from '@angular/forms';
     SolarComponent,
     TrafficComponent,
     TrafficChartComponent,
-  ],
+  ], exports:[
+    SecurityCamerasComponent,
+    StatusCardComponent
+  ]
 })
 export class DashboardModule { }

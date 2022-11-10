@@ -27,14 +27,76 @@
     padding: 0!important;
   }
 
+  .NotificationAndSearchBar{display:flex;justify-content:flex-end;flex-grow:1;align-items:center;position:relative;margin-right:1rem}
+  .NotificationAndSearchBar input{right:0;position:relative;justify-content:flex-end;outline:none;border:1px solid var(--app-navbar-icon-color);border-radius:24px;padding:11px .75rem 10px .75rem;color:#fff;font-size:.7rem;line-height:1;padding-right:1.8rem;font-family:"Fira Code Regular";width:100%;max-width:374px;min-width:80px;transition:none;background:var(--app-navbar-background)}.TopNavBar .NotificationAndSearchBar input:focus{min-width:374px;position:absolute;transition:all .25s}.TopNavBar .NotificationAndSearchBar input::-webkit-input-placeholder{color:var(--app-navbar-icon-color)}.TopNavBar .NotificationAndSearchBar input:focus{border-color:#fff;color:#fff}.TopNavBar .NotificationAndSearchBar>svg{position:absolute;right:16px;height:16px;width:16px;color:var(--app-navbar-icon-color)}.TopNavBar .StatusAndControls{width:100vw;height:56px;color:var(--app-statusbar-text);background-color:var(--app-statusbar-background);display:flex;flex-direction:row}.TopNavBar .Status{display:flex;flex:1}.TopNavBar .Actions{display:flex;flex-direction:row;align-items:center;height:55px}.TopNavBar .Actions .StatusIndicator{margin-right:1.3em}.TopNavBar .Actions button{margin-right:1rem;padding:0 .8rem;display:flex;align-items:center;-webkit-app-region:no-drag}.TopNavBar .Actions button:active{transform:scale(0.98)}.TopNavBar .Actions button:hover{color:var(--app-button-primary-background-color);background:var(--app-statusbar-btn-text)}.TopNavBar .Actions button>div{margin-right:.5rem}.TopNavBar .Actions button .settingsIconWrapper{width:18px;margin:6px 0 0}.TopNavBar .Actions button svg>*{stroke:currentColor !important;fill:currentColor !important}.TopNavBar .StopMining{stroke-width:1}
+  .NotificationAndSearchBar input:focus{min-width:374px;position:absolute;transition:all .25s}.TopNavBar .NotificationAndSearchBar input::-webkit-input-placeholder{color:var(--app-navbar-icon-color)}.TopNavBar .NotificationAndSearchBar input:focus{border-color:#fff;color:#fff}.TopNavBar .NotificationAndSearchBar>svg{position:absolute;right:16px;height:16px;width:16px;color:var(--app-navbar-icon-color)}.TopNavBar .StatusAndControls{width:100vw;height:56px;color:var(--app-statusbar-text);background-color:var(--app-statusbar-background);display:flex;flex-direction:row}.TopNavBar .Status{display:flex;flex:1}.TopNavBar .Actions{display:flex;flex-direction:row;align-items:center;height:55px}.TopNavBar .Actions .StatusIndicator{margin-right:1.3em}.TopNavBar .Actions button{margin-right:1rem;padding:0 .8rem;display:flex;align-items:center;-webkit-app-region:no-drag}.TopNavBar .Actions button:active{transform:scale(0.98)}.TopNavBar .Actions button:hover{color:var(--app-button-primary-background-color);background:var(--app-statusbar-btn-text)}.TopNavBar .Actions button>div{margin-right:.5rem}.TopNavBar .Actions button .settingsIconWrapper{width:18px;margin:6px 0 0}.TopNavBar .Actions button svg>*{stroke:currentColor !important;fill:currentColor !important}.TopNavBar .StopMining{stroke-width:1}
+  .NotificationAndSearchBar input::-webkit-input-placeholder{color:var(--app-navbar-icon-color)}.TopNavBar .NotificationAndSearchBar input:focus{border-color:#fff;color:#fff}.TopNavBar .NotificationAndSearchBar>svg{position:absolute;right:16px;height:16px;width:16px;color:var(--app-navbar-icon-color)}.TopNavBar .StatusAndControls{width:100vw;height:56px;color:var(--app-statusbar-text);background-color:var(--app-statusbar-background);display:flex;flex-direction:row}.TopNavBar .Status{display:flex;flex:1}.TopNavBar .Actions{display:flex;flex-direction:row;align-items:center;height:55px}.TopNavBar .Actions .StatusIndicator{margin-right:1.3em}.TopNavBar .Actions button{margin-right:1rem;padding:0 .8rem;display:flex;align-items:center;-webkit-app-region:no-drag}.TopNavBar .Actions button:active{transform:scale(0.98)}.TopNavBar .Actions button:hover{color:var(--app-button-primary-background-color);background:var(--app-statusbar-btn-text)}.TopNavBar .Actions button>div{margin-right:.5rem}.TopNavBar .Actions button .settingsIconWrapper{width:18px;margin:6px 0 0}.TopNavBar .Actions button svg>*{stroke:currentColor !important;fill:currentColor !important}.TopNavBar .StopMining{stroke-width:1}
+  .NotificationAndSearchBar>svg{position:absolute;right:16px;height:16px;width:16px;color:var(--app-navbar-icon-color)}.TopNavBar .StatusAndControls{width:100vw;height:56px;color:var(--app-statusbar-text);background-color:var(--app-statusbar-background);display:flex;flex-direction:row}.TopNavBar .Status{display:flex;flex:1}.TopNavBar .Actions{display:flex;flex-direction:row;align-items:center;height:55px}.TopNavBar .Actions .StatusIndicator{margin-right:1.3em}.TopNavBar .Actions button{margin-right:1rem;padding:0 .8rem;display:flex;align-items:center;-webkit-app-region:no-drag}.TopNavBar .Actions button:active{transform:scale(0.98)}.TopNavBar .Actions button:hover{color:var(--app-button-primary-background-color);background:var(--app-statusbar-btn-text)}.TopNavBar .Actions button>div{margin-right:.5rem}.TopNavBar .Actions button .settingsIconWrapper{width:18px;margin:6px 0 0}.TopNavBar .Actions button svg>*{stroke:currentColor !important;fill:currentColor !important}.TopNavBar .StopMining{stroke-width:1}
+  .NotificationAndSearchBar{display:flex;justify-content:flex-end;flex-grow:1;align-items:center;position:relative;margin-right:1rem}.TopNavBar .NotificationAndSearchBar input{right:0;position:relative;justify-content:flex-end;outline:none;border:1px solid var(--app-navbar-icon-color);border-radius:24px;padding:11px .75rem 10px .75rem;color:#fff;font-size:.7rem;line-height:1;padding-right:1.8rem;font-family:"Fira Code Regular";width:100%;max-width:374px;min-width:80px;transition:none;background:var(--app-navbar-background)}.TopNavBar .NotificationAndSearchBar input:focus{min-width:374px;position:absolute;transition:all .25s}.TopNavBar .NotificationAndSearchBar input::-webkit-input-placeholder{color:var(--app-navbar-icon-color)}.TopNavBar .NotificationAndSearchBar input:focus{border-color:#fff;color:#fff}.TopNavBar .NotificationAndSearchBar>svg{position:absolute;right:16px;height:16px;width:16px;color:var(--app-navbar-icon-color)}.TopNavBar .StatusAndControls{width:100vw;height:56px;color:var(--app-statusbar-text);background-color:var(--app-statusbar-background);display:flex;flex-direction:row}.TopNavBar .Status{display:flex;flex:1}.TopNavBar .Actions{display:flex;flex-direction:row;align-items:center;height:55px}.TopNavBar .Actions .StatusIndicator{margin-right:1.3em}.TopNavBar .Actions button{margin-right:1rem;padding:0 .8rem;display:flex;align-items:center;-webkit-app-region:no-drag}.TopNavBar .Actions button:active{transform:scale(0.98)}.TopNavBar .Actions button:hover{color:var(--app-button-primary-background-color);background:var(--app-statusbar-btn-text)}.TopNavBar .Actions button>div{margin-right:.5rem}.TopNavBar .Actions button .settingsIconWrapper{width:18px;margin:6px 0 0}.TopNavBar .Actions button svg>*{stroke:currentColor !important;fill:currentColor !important}.TopNavBar .StopMining{stroke-width:1}
+  .NotificationAndSearchBar input{right:0;position:relative;justify-content:flex-end;outline:none;border:1px solid var(--app-navbar-icon-color);border-radius:24px;padding:11px .75rem 10px .75rem;color:#fff;font-size:.7rem;line-height:1;padding-right:1.8rem;font-family:"Fira Code Regular";width:100%;max-width:374px;min-width:80px;transition:none;background:var(--app-navbar-background)}.TopNavBar .NotificationAndSearchBar input:focus{min-width:374px;position:absolute;transition:all .25s}.TopNavBar .NotificationAndSearchBar input::-webkit-input-placeholder{color:var(--app-navbar-icon-color)}.TopNavBar .NotificationAndSearchBar input:focus{border-color:#fff;color:#fff}.TopNavBar .NotificationAndSearchBar>svg{position:absolute;right:16px;height:16px;width:16px;color:var(--app-navbar-icon-color)}.TopNavBar .StatusAndControls{width:100vw;height:56px;color:var(--app-statusbar-text);background-color:var(--app-statusbar-background);display:flex;flex-direction:row}.TopNavBar .Status{display:flex;flex:1}.TopNavBar .Actions{display:flex;flex-direction:row;align-items:center;height:55px}.TopNavBar .Actions .StatusIndicator{margin-right:1.3em}.TopNavBar .Actions button{margin-right:1rem;padding:0 .8rem;display:flex;align-items:center;-webkit-app-region:no-drag}.TopNavBar .Actions button:active{transform:scale(0.98)}.TopNavBar .Actions button:hover{color:var(--app-button-primary-background-color);background:var(--app-statusbar-btn-text)}.TopNavBar .Actions button>div{margin-right:.5rem}.TopNavBar .Actions button .settingsIconWrapper{width:18px;margin:6px 0 0}.TopNavBar .Actions button svg>*{stroke:currentColor !important;fill:currentColor !important}.TopNavBar .StopMining{stroke-width:1}
+  .NotificationAndSearchBar input:focus{min-width:374px;position:absolute;transition:all .25s}.TopNavBar .NotificationAndSearchBar input::-webkit-input-placeholder{color:var(--app-navbar-icon-color)}.TopNavBar .NotificationAndSearchBar input:focus{border-color:#fff;color:#fff}.TopNavBar .NotificationAndSearchBar>svg{position:absolute;right:16px;height:16px;width:16px;color:var(--app-navbar-icon-color)}.TopNavBar .StatusAndControls{width:100vw;height:56px;color:var(--app-statusbar-text);background-color:var(--app-statusbar-background);display:flex;flex-direction:row}.TopNavBar .Status{display:flex;flex:1}.TopNavBar .Actions{display:flex;flex-direction:row;align-items:center;height:55px}.TopNavBar .Actions .StatusIndicator{margin-right:1.3em}.TopNavBar .Actions button{margin-right:1rem;padding:0 .8rem;display:flex;align-items:center;-webkit-app-region:no-drag}.TopNavBar .Actions button:active{transform:scale(0.98)}.TopNavBar .Actions button:hover{color:var(--app-button-primary-background-color);background:var(--app-statusbar-btn-text)}.TopNavBar .Actions button>div{margin-right:.5rem}.TopNavBar .Actions button .settingsIconWrapper{width:18px;margin:6px 0 0}.TopNavBar .Actions button svg>*{stroke:currentColor !important;fill:currentColor !important}.TopNavBar .StopMining{stroke-width:1}
+  .NotificationAndSearchBar input::-webkit-input-placeholder{color:var(--app-navbar-icon-color)}.TopNavBar .NotificationAndSearchBar input:focus{border-color:#fff;color:#fff}.TopNavBar .NotificationAndSearchBar>svg{position:absolute;right:16px;height:16px;width:16px;color:var(--app-navbar-icon-color)}.TopNavBar .StatusAndControls{width:100vw;height:56px;color:var(--app-statusbar-text);background-color:var(--app-statusbar-background);display:flex;flex-direction:row}.TopNavBar .Status{display:flex;flex:1}.TopNavBar .Actions{display:flex;flex-direction:row;align-items:center;height:55px}.TopNavBar .Actions .StatusIndicator{margin-right:1.3em}.TopNavBar .Actions button{margin-right:1rem;padding:0 .8rem;display:flex;align-items:center;-webkit-app-region:no-drag}.TopNavBar .Actions button:active{transform:scale(0.98)}.TopNavBar .Actions button:hover{color:var(--app-button-primary-background-color);background:var(--app-statusbar-btn-text)}.TopNavBar .Actions button>div{margin-right:.5rem}.TopNavBar .Actions button .settingsIconWrapper{width:18px;margin:6px 0 0}.TopNavBar .Actions button svg>*{stroke:currentColor !important;fill:currentColor !important}.TopNavBar .StopMining{stroke-width:1}
+  .NotificationAndSearchBar input:focus{border-color:#fff;color:#fff}.TopNavBar .NotificationAndSearchBar>svg{position:absolute;right:16px;height:16px;width:16px;color:var(--app-navbar-icon-color)}.TopNavBar .StatusAndControls{width:100vw;height:56px;color:var(--app-statusbar-text);background-color:var(--app-statusbar-background);display:flex;flex-direction:row}.TopNavBar .Status{display:flex;flex:1}.TopNavBar .Actions{display:flex;flex-direction:row;align-items:center;height:55px}.TopNavBar .Actions .StatusIndicator{margin-right:1.3em}.TopNavBar .Actions button{margin-right:1rem;padding:0 .8rem;display:flex;align-items:center;-webkit-app-region:no-drag}.TopNavBar .Actions button:active{transform:scale(0.98)}.TopNavBar .Actions button:hover{color:var(--app-button-primary-background-color);background:var(--app-statusbar-btn-text)}.TopNavBar .Actions button>div{margin-right:.5rem}.TopNavBar .Actions button .settingsIconWrapper{width:18px;margin:6px 0 0}.TopNavBar .Actions button svg>*{stroke:currentColor !important;fill:currentColor !important}.TopNavBar .StopMining{stroke-width:1}
+  .NotificationAndSearchBar>svg{position:absolute;right:16px;height:16px;width:16px;color:var(--app-navbar-icon-color)}.TopNavBar .StatusAndControls{width:100vw;height:56px;color:var(--app-statusbar-text);background-color:var(--app-statusbar-background);display:flex;flex-direction:row}.TopNavBar .Status{display:flex;flex:1}.TopNavBar .Actions{display:flex;flex-direction:row;align-items:center;height:55px}.TopNavBar .Actions .StatusIndicator{margin-right:1.3em}.TopNavBar .Actions button{margin-right:1rem;padding:0 .8rem;display:flex;align-items:center;-webkit-app-region:no-drag}.TopNavBar .Actions button:active{transform:scale(0.98)}.TopNavBar .Actions button:hover{color:var(--app-button-primary-background-color);background:var(--app-statusbar-btn-text)}.TopNavBar .Actions button>div{margin-right:.5rem}.TopNavBar .Actions button .settingsIconWrapper{width:18px;margin:6px 0 0}.TopNavBar .Actions button svg>*{stroke:currentColor !important;fill:currentColor !important}.TopNavBar .StopMining{stroke-width:1}
+
+  // when not in search field, make smaller
+  .mat-form-field {
+    transition: 0.9s ease-in-out;
+    width: 200px;
+  }
+  // when in search field, enlarge
+  .mat-focused {
+    width: 500px;
+    transition: 0.2s ease-in-out;
+  }
+
+  //hide upward-moving placeholder when in search field
+  .mat-focused .ng-star-inserted{
+    display: none;
+  }
+  
+  // make caret white
+  ::ng-deep .mat-input-element {
+    caret-color: white!important;
+}
+  // move search icon down a bit
+  .searchIcon {
+    transform: translateY(7px)!important;
+  }
+ ::ng-deep .mat-form-field-label-wrapper{
+      top: -0.14375em!important;
+      padding-top: 0.14375em!important;
+  } 
+
+  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex  {
+    padding: 0 0.75em 0 0.75em !important;
+  }
+
+  // move input field down a bit
+  ::ng-deep .nb-theme-material-dark .mat-form-field-wrapper {
+    padding-bottom: 0.65625em!important;
+  }
+
+  .nb-theme-material-dark .mat-form-field-wrapper {
+    padding-bottom: 0.64375em;
+}
+
+::ng-deep .nb-theme-material-dark .mat-form-field-infix{
+    border-top: 0.45625em solid transparent;
+  }
+
+  ::ng-deep .mat-empty {
+    display: unset;
+  } 
+
   .header-container {
     display: flex;
     align-items: center;
     width: auto;
 
     .sidebar-toggle {
-      @include nb-ltr(padding-right, 1.25rem);
-      @include nb-rtl(padding-left, 1.25rem);
+      @include nb-ltr(margin-right, 1.25rem);
+      @include nb-rtl(margin-left, 1.25rem);
       text-decoration: none;
       color: nb-theme(text-hint-color);
       nb-icon {

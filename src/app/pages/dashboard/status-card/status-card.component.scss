@@ -1,11 +1,96 @@
 @import '../../../@theme/styles/themes';
 
 @include nb-install-component() {
+
+  .shinyCard {
+    position: relative;
+    overflow: hidden;
+      /*   background-image: (linear-gradient(to left, #2d8fe5, #d155b8)); */
+  cursor: auto;
+
+
+
+    // psuedo-element shine animation left side
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    width: 60px;
+    height: 100%;
+    top: 0;
+    filter: blur(30px);
+    transform: translateX(-100px) skewX(-15deg);
+  }
+
+  // psuedo-element shine animation right side
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+    width: 30px;
+    height: 100%;
+    top: 0;
+    filter: blur(5px);
+    transform: translateX(-100px) skewX(-15deg);
+  }
+
+      // psuedo-elements for right- and left-side shine animations
+ /*      &::before,
+      &::after {
+        transform: translateX(300px) skewX(-15deg);
+        transition: 6.7s;
+           transition-delay: 2s;
+      transition-property: transform;
+      } */
+
+  // grow button and change background gradient on hover
+  &:hover {
+  /*   background-image: (linear-gradient(to left, #2d8fe5, #d155b8)); */
+  transition: all 0.2s cubic-bezier(.34,1.56,.69,1.17);
+    transform: scale(1.05);
+    cursor: auto;
+ 
+    // psuedo-elements for right- and left-side shine animations
+    &::before,
+    &::after {
+      transform: translateX(700px) skewX(-15deg);
+      transition: 0.7s;
+    }
+
+    // on initial loading
+    &::before,
+    &::after {
+      transform: translateX(700px) skewX(-15deg);
+      transition: 0.7s;
+      /* transition-delay: 1s;
+      transition-property: transform; */
+    }
+  }
+
+
+  }
+
+  .greyContainer {
+    box-shadow: none;
+    border-color: rgba(128, 128, 128, 0.24);
+    background-image: linear-gradient(to right, #303030, #303030)!important;
+    border-style: solid;
+    border-width: 0.0625rem;
+    font-size: 1rem!important;
+    cursor: pointer;
+
+      &:hover{
+        background-image: linear-gradient(to right, #353535, #353535)!important;
+      }
+  }
+
   nb-card {
     flex-direction: row;
     align-items: center;
     height: 6rem;
-    overflow: visible;
+    cursor: pointer;
 
     .icon-container {
       height: 100%;

@@ -23,7 +23,7 @@ export class IconsComponent {
   icons = {
 
     ionicons: [
-      'ionic', 'arrow-right-b', 'arrow-down-b', 'arrow-left-b', 'arrow-up-c', 'arrow-right-c',
+      'ionic', 'help-circle-outline', 'arrow-right-b', 'arrow-down-b', 'arrow-left-b', 'arrow-up-c', 'arrow-right-c',
       'arrow-down-c', 'arrow-left-c', 'arrow-return-right', 'arrow-return-left', 'arrow-swap',
       'arrow-shrink', 'arrow-expand', 'arrow-move', 'arrow-resize', 'chevron-up',
       'chevron-right', 'chevron-down', 'chevron-left', 'navicon-round', 'navicon',

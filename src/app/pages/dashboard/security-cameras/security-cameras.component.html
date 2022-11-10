@@ -1,8 +1,12 @@
-<nb-card size="giant">
+<!-- <nb-card size="giant" class="col-md-10"> -->
+  
+  <nb-card size="giant" class="col-md-12 noPadding">
 
   <nb-card-header>
-    Security Cameras
 
+    NFT Preview  &nbsp; <nb-icon class="centerIcon" [icon]="'question-mark-circle-outline'" pack="eva" nbPopover="The preview does not represent the real size of your NFT." nbPopoverTrigger="hover" nbPopoverPlacement="right"></nb-icon>
+
+    <!-- 
     <button class="single-view-button"
             nbButton
             size="small"
@@ -16,18 +20,20 @@
             [appearance]="isSingleView ? 'outline' : 'filled'"
             (click)="isSingleView = false">
       <nb-icon icon="grid" pack="eva"></nb-icon>
-    </button>
+    </button> -->
   </nb-card-header>
 
   <div class="grid-container">
 
     <div class="single-view" *ngIf="isSingleView">
-      <div class="camera" [style.background-image]="'url(' + selectedCamera.source + ')'">
-        <span class="camera-name">{{ selectedCamera.title }}</span>
+      <!-- <div class="camera single" [style.background-image]="'url(' + 'assets/images/placeholder.png' + ')'"> -->
+      <div class="camera single" [style.background-image]=" nftBaseUrl?.length < 1 ? 'url(' + 'assets/images/placeholder-darker.png' + ')' : 'url(' + nftBaseUrl + ')' ">
+      <!-- <div class="camera single" [style.background-image]="'url(' + nftBaseUrl != '' ? nftBaseUrl : 'assets/images/camera3.jpg' + ')'"> -->
+        <span class="camera-name">{{ nftName.length > 0 ? nftName : "(Enter a name for your NFT)"}}</span>
       </div>
     </div>
 
-    <div class="grid-view" *ngIf="!isSingleView">
+<!--     <div class="grid-view" *ngIf="!isSingleView">
       <div class="camera"
            *ngFor="let camera of cameras"
            [style.background-image]="'url(' + camera.source + ')'"
@@ -35,27 +41,28 @@
         <span class="camera-name">{{ camera.title }}</span>
       </div>
     </div>
-
+ -->
   </div>
 
-  <nb-card-footer>
-    <nb-actions [size]="actionSize" fullWidth>
-      <nb-action>
+  <nb-card-footer class="hideFooter">
+    <nb-actions style="visibility: hidden;" [size]="actionSize" fullWidth>
+      <nb-action matRipple>
         <nb-icon icon="pause-circle-outline" pack="eva"></nb-icon>
         Pause
       </nb-action>
-      <nb-action>
+      <nb-action matRipple>
         <nb-icon icon="list-outline" pack="eva"></nb-icon>
         Logs
       </nb-action>
-      <nb-action>
+      <nb-action matRipple>
         <nb-icon icon="search-outline" pack="eva"></nb-icon>
         Search
       </nb-action>
-      <nb-action>
+      <nb-action matRipple>
         <nb-icon icon="settings-2-outline" pack="eva"></nb-icon>
         Setup
       </nb-action>
     </nb-actions>
   </nb-card-footer>
+  
 </nb-card>
