@@ -8,6 +8,7 @@ import {
   AE_AMOUNT_FORMATS
 } from '@aeternity/aepp-sdk/dist/aepp-sdk.browser.js';
 import { environment } from '../../environments/environment';
+import { Observable, of} from 'rxjs';
 const { projectName, networkId, nodeUrl, nodeCompilerUrl } =
   environment;
 
@@ -30,9 +31,11 @@ export class AeternityService {
     nodeUrl?: string,
   } = {};
 
+  deployedNftAddress = '';
+
   status: WalletConnectionStatus = WalletConnectionStatus.Connecting
   WalletConnectionStatus = WalletConnectionStatus
-
+  sdkStateObservable: Observable<Object>;
 
   constructor() { 
     const onNetworkChange = (params : any ) => {
@@ -60,8 +63,14 @@ export class AeternityService {
     });
     this.sdkState.height = await this.aeSdk.height();
     console.log(this.sdkState);
+   
     // this.sdkState.nodeUrl = (await this.aeSdk.getNodeInfo()).url;
     this.status = WalletConnectionStatus.Connected;
+    this.sdkStateObservable = new Observable((observer) => {
+      observer.next(this.sdkState);
+      observer.complete();
+    });
+
   }
 
   async initSDK(onNetworkChange: any) {

@@ -4,7 +4,7 @@ import {
   NbButtonModule,
   NbCardModule,
   NbCheckboxModule,
-  NbDatepickerModule, NbIconModule,
+  NbDatepickerModule, NbIconModule, NbLayoutModule,
   NbInputModule,
   NbRadioModule,
   NbSelectModule,
@@ -22,6 +22,7 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { MaterialButtonsComponent } from './buttons/material-buttons/material-buttons.component';
 import { FormsModule as ngFormsModule } from '@angular/forms';
+import { StatusCardComponent } from '../dashboard/status-card/status-card.component';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -36,6 +37,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 /* import { SecurityCamerasComponent } from './security-cameras/security-cameras.component'; */
 import { DashboardModule } from '../dashboard/dashboard.module'
+import { SharedModulesModule } from '../../shared-modules/shared-modules.module';
 //import { SecurityCamerasComponent } from '../dashboard/dashboard.module'
 
 
@@ -71,6 +73,7 @@ const materialModules = [
     ngFormsModule,
     DashboardModule,
     ...materialModules,
+    SharedModulesModule
   ],
   declarations: [
     FormsComponent,

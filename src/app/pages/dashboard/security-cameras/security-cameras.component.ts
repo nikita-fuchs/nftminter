@@ -57,34 +57,32 @@ export class SecurityCamerasComponent implements OnInit, OnDestroy, OnChanges {
 
 
   ngOnChanges(changes: SimpleChanges) {
-    /* 
-if (changes.nftBaseUrl && changes.nftBaseUrl.currentValue !== "" ) {
-  fetch(changes.nftBaseUrl.currentValue , {
-    mode: 'no-cors',
-    headers: {
-      'Access-Control-Allow-Origin':'*'
+    
+    if (changes.nftBaseUrl && changes.nftBaseUrl.currentValue !== "" ) {
+      fetch("http://95.216.27.196:8081/proxy/" + changes.nftBaseUrl.currentValue , {
+      /*   headers: {
+          'Access-Control-Allow-Origin':'*'
+        } */
+      })
+   /*    .then((data: any) => {
+        console.log(data ? JSON.parse(data) : {})
+      })
+      .catch((error) => {
+        console.log(error)
+      })   */
+      .then(response => {
+        //@ts-ignore
+        const contentType = response.headers.get("content-type");
+        console.log("content type:", contentType);
+        //@ts-ignore
+        if (contentType && contentType.indexOf("image/") !== -1) {
+          console.log("Found image !");
+          this.nftCheckedImageLink = changes.nftBaseUrl.currentValue
+        } else {
+          console.log("Not an image.");
+        }
+      }) 
     }
-  }).then((response) => 
-      {
-        console.log("response: ", response);
-         return response.json();
-        }).then((data) => {
-  	console.log(data);
-  })
-   */
-  
-/*   .then(response => {
-    const contentType = response.headers.get("content-type");
-    console.log("Headers: ", response.headers)
-    debugger
-    if (contentType && contentType.indexOf("image/") !== -1) {
-      console.log("Found image !");
-      this.nftCheckedImageLink = changes.nftBaseUrl.currentValue
-    } else {
-      console.log("Not an image.");
-    }
-  }) 
-} */
 
     // console.log(changes);
     // var httpRegex = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
@@ -99,6 +97,7 @@ if (changes.nftBaseUrl && changes.nftBaseUrl.currentValue !== "" ) {
     //     couldbeLoaded: true //TODO: use fetch APi to check. hardcoded for now
     //   });
     // }
+    
   }
 
   selectCamera(camera: any) {

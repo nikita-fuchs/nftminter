@@ -33,7 +33,23 @@
 	}
 }
 
-
+.slideUpNotification {
+	animation: dataCardSlideIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0s 1 normal forwards;
+  }
+  
+  @keyframes dataCardSlideIn {
+	  0% {
+		  opacity: 0;
+		  transform: translateY(500px);
+	  }
+  
+	  100% {
+		  opacity: 1;
+		  transform: translateY(0);
+	  }
+  }
+  
+  
 
 
 .leaveSpaceForHelp {

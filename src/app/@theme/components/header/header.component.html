@@ -27,15 +27,43 @@
 </div>
 
 <div class="header-container">
-  <nb-actions size="small">
 
-    <nb-action class="control-item">
+  <mat-form-field  style="transform: translateY(7px)" [ngClass]="true ? 'mat-form-field-hide-placeholder' : 'mat-form-field-hide-placeholder' " appearance="fill">
+    <mat-label>Search Token or NFT</mat-label>
+    <input matInput placeholder="Paste the contract address of your Token or NFT, e.g. ct_1337..">
+    <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+    <mat-icon class="searchIcon" matSuffix>search</mat-icon>
+    <!-- <mat-hint>Hint</mat-hint> -->
+  </mat-form-field>
+
+
+  <div class="NotificationAndSearchBar">
+    <!-- TODO: Hide logo on small devices when searching -->
+
+  <!--   <mat-form-field class="input-example">
+      <mat-label>Input</mat-label>
+      <input matInput autocomplete="off">
+      <mat-hint>hint</mat-hint>
+    </mat-form-field> -->
+
+<!--     <input #search type="text" placeholder="SEARCH FOR BLOCK NUMBERS OR TX HASHES" title="SEARCH FOR BLOCK NUMBERS OR TX HASHES" value="" placeholder="SEARCH FOR ADDRESSES, BALANCES, ETC..." (keyup)="onSearch(search.value)">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+      <path d="M17 16l-5-4M7 1a6 6 0 110 12A6 6 0 017 1h0z" fill="none" fill-rule="evenodd" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+     </svg>
+   </div>
+ -->
+
+  <nb-actions size="small">
+ <!-- Search, mail and bell noticifaction -->
+<!-- 
+    <nb-action style="padding: 0 1.25rem 0 0.5rem" class="control-item">
       <nb-search
         type="rotate-layout"
         matRipple
         [matRippleUnbounded]="true"
         [matRippleCentered]="true"
       ></nb-search></nb-action>
+       
     <nb-action
       class="control-item"
       icon="email-outline"
@@ -43,6 +71,7 @@
       [matRippleUnbounded]="true"
       [matRippleCentered]="true"
     ></nb-action>
+    
     <nb-action
       class="control-item"
       icon="bell-outline"
@@ -50,17 +79,26 @@
       [matRippleUnbounded]="true"
       [matRippleCentered]="true"
     ></nb-action>
+
+ -->
     <nb-action
       class="user-action"
       *nbIsGranted="['view', 'user']"
       matRipple
       [matRippleUnbounded]="true"
       [matRippleCentered]="true">
-      <nb-user [nbContextMenu]="userMenu"
-               [onlyPicture]="userPictureOnly"
-               [name]="user?.name"
-               [picture]="user?.picture">
+      <!-- <nb-user [nbContextMenu]="userMenu" get context menu like this -->
+      <nb-user [onlyPicture]="userPictureOnly"
+               [name]="aeternityservice?.sdkState?.address ? 
+                       aeternityservice?.sdkState?.address.substring(0,7) + '. . .' + aeternityservice?.sdkState?.address.slice(-4):
+                       'Wallet not connected '"
+               
+               [picture]="aeternityservice?.sdkState?.address ? 
+                          'https://avatars.z52da5wt.xyz/' + aeternityservice?.sdkState?.address : 
+                          'https://avatars.z52da5wt.xyz/'">
       </nb-user>
     </nb-action>
   </nb-actions>
 </div>
+
+<!-- [name]="aeternityservice?.sdkState?.address ? aeternityservice?.sdkState?.address : 'No wallet connected'" -->

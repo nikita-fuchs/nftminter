@@ -69,7 +69,19 @@
           
           <div class="form-group row">
             <div class="offset-sm-3 col-sm-9">
-              <button type="submit" [disabled]="!nftData.valid" (click)="mint()" nbButton status="primary">Mint</button>
+              <button type="submit" 
+              [disabled]="!nftData.valid || showSpinnerOnMintButton" 
+              (click)="mint()" 
+              nbButton status="primary"
+              nbButton 
+              matRipple 
+              status="primary" 
+              size="large" 
+              [nbSpinner]="showSpinnerOnMintButton" 
+              nbSpinnerStatus="primary" 
+              nbSpinnerSize="large" 
+              nbSpinnerMessage=""
+              >Mint</button>
             </div>
           </div>
 
@@ -78,10 +90,23 @@
       </nb-card-body>
     </nb-card>
     
+    <!-- Success notification-->
+    <div *ngIf="this.aeService.deployedNftAddress != ''" class="slideUpNotification" >
+    <!-- <div *ngIf="true" class="slideUpNotification" > -->
+      <ngx-status-card [title]="'NFT MINTED !'" [type]="'success'">
+        <!-- <i [ngClass]="'nb-checkmark'"></i> -->
+        Your NFT has successfully been <br> minted to the Blockchain! 
+      </ngx-status-card>
+    </div>
+  
+
   </div>
+
 
  <!-- NFT Preview -->
   <ngx-security-cameras class="centerPreview slideLeft" [nftBaseUrl]="this.nftData.get('nftBaseUrl').value" [nftName]="this.nftData.get('nftName').value" ></ngx-security-cameras>
+
+
 
   <!-- <nb-card size="giant">
 

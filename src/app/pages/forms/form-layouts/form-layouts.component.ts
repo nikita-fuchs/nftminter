@@ -17,7 +17,7 @@ export class FormLayoutsComponent {
   /* view-related start */
   isSingleView : boolean;
   actionSize = 'medium';
-
+  showSpinnerOnMintButton = false;
 
   private destroy$ = new Subject<void>();
   cameras: Camera[];
@@ -43,7 +43,7 @@ export class FormLayoutsComponent {
 
   constructor(
     private securityCamerasService: SecurityCamerasData,
-    private aeService: AeternityService 
+    public aeService: AeternityService 
   ){
     this.isSingleView = true; // UI
 
@@ -84,7 +84,10 @@ export class FormLayoutsComponent {
 
   async mint() {
 
-    // TODO; MVP - mint only one NFT into the new contract
+    this.aeService.deployedNftAddress = ''
+    this.showSpinnerOnMintButton = true;
+    // TODO mint multiple NFTs; 
+    // MVP - mint only one NFT into the new contract
     const nfts : Array<aex141nft> = [
       {
         "name": this.nftData.get('nftName').value,
@@ -111,7 +114,7 @@ export class FormLayoutsComponent {
 
     // deploy
     console.log("Deploying with: ",this.nftData.get('nftBaseUrl').value, this.nftData.get('nftSymbol').value);
-    debugger
+    //debugger
     await contract.deploy([
       this.nftData.get('nftBaseUrl').value,
       this.nftData.get('nftSymbol').value
@@ -122,6 +125,8 @@ export class FormLayoutsComponent {
         "Test"
     ]); */
 
+    this.aeService.deployedNftAddress = contract.deployInfo.address;
+    this.showSpinnerOnMintButton = false;
     console.log(`Contract successfully deployed!`);
     console.log(`Contract address: ${contract.deployInfo.address}`);
     console.log(`Tx-Hash: ${contract.deployInfo.txData.hash}`);
