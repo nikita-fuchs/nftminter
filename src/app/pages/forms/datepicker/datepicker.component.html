@@ -1,12 +1,74 @@
+
 <div class="row">
-  <div class="col-md-12 col-lg-4 col-xxxl-4">
-    <nb-card>
-      <nb-card-header>Common Datepicker</nb-card-header>
+
+    <ngx-security-cameras *ngFor='let nft of nfts' class="col-md-12 col-lg-8 col-xxxl-8 centerPreview slideLeft" [nftBaseUrl]="nft.nftBaseUrl" [nftName]="nft.nftName" ></ngx-security-cameras>
+
+  <div class="col-md-12 col-lg-4 col-xxxl-4 ">
+    <nb-card size="medium" class="headings-card">
+      <nb-card-header>Description</nb-card-header>
       <nb-card-body>
-        <input nbInput
-               placeholder="Form Picker"
-               [nbDatepicker]="formpicker">
-        <nb-datepicker #formpicker></nb-datepicker>
+        <div class="header">
+          
+                    <div>
+                      <h1>XYZ</h1>
+                    </div>
+          <div class="detail">
+            Symbol
+          </div>
+
+        </div>
+
+        <div class="header">
+          
+          <div>
+            <h2>Trollcat</h2>
+          </div>
+          <div class="detail">
+            Name
+          </div>
+          
+        </div>
+
+        <div class="header">
+          <div>
+            <h3>H3. Heading</h3>
+          </div>
+
+          <div class="detail">
+            800 1.875rem (30px)
+          </div>
+        </div>
+        <div class="header">
+          <div>
+            <h4>H4. Heading</h4>
+          </div>
+
+          <div class="detail">
+            800 1.625rem (26px)
+          </div>
+        </div>
+        <div class="header">
+          <div>
+            <h5>H5. Heading</h5>
+          </div>
+
+          <div class="detail">
+            800 1.375rem (22px)
+          </div>
+        </div>
+        <div class="header">
+          <div>
+            <h6>H6. Heading</h6>
+          </div>
+
+          <div class="detail">
+            800 1.125rem (18px)
+          </div>
+        </div>
+      
+
+
+
       </nb-card-body>
     </nb-card>
   </div>

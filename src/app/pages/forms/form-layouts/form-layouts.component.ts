@@ -33,11 +33,6 @@ export class FormLayoutsComponent {
     { label: 'Mintable / Burnable', value: 'mintable' },
   ];
 
-  // nftName : string;   get data from Formgroup ! this.nftData.get('nftName').value
-  // nftBaseUrl : string;
-  // nftSymbol : string;
-  // nftDescription : string;
-
   aeSdk : any
   /* dApp related end  */
 
@@ -47,18 +42,19 @@ export class FormLayoutsComponent {
   ){
     this.isSingleView = true; // UI
 
-    const onNetworkChange = (params : any ) => {
+/*     const onNetworkChange = (params : any ) => {
       // TODO: Make a toast for network changes
       // TODO: Display warning when on wrong network
       console.log("Network change:", params.networkId);
-    };
-    aeService.initSDK(onNetworkChange)
+    }; */
+
+  /*   aeService.initSDK(onNetworkChange)
       .then( async ({walletNetworkId, aeSdk} : {walletNetworkId: string, aeSdk: any}) => {
         this.aeSdk = aeSdk;
         console.log("Initialised sdk");
         const test = await this.aeService.showWalletInfo(walletNetworkId);
 
-    });
+    }); */
   }
 
   ngOnInit() {
@@ -88,7 +84,15 @@ export class FormLayoutsComponent {
     this.showSpinnerOnMintButton = true;
     // TODO mint multiple NFTs; 
     // MVP - mint only one NFT into the new contract
-    const nfts : Array<aex141nft> = [
+    const nfts = [
+      {
+        "name": this.nftData.get('nftName').value,
+        "description": this.nftData.get('nftDescription').value,
+        "media_type": "IMAGE",
+        "media_url": this.nftData.get('nftBaseUrl').value
+      }
+    ];
+/*     const nfts : Array<aex141nft> = [
       {
         "name": this.nftData.get('nftName').value,
         "description": this.nftData.get('nftDescription').value,
@@ -102,7 +106,7 @@ export class FormLayoutsComponent {
             "retries": 0
         }
       }
-    ];
+    ]; */
 
     const senderAddress = await this.aeService.sdkState.address;
 
@@ -116,7 +120,7 @@ export class FormLayoutsComponent {
     console.log("Deploying with: ",this.nftData.get('nftBaseUrl').value, this.nftData.get('nftSymbol').value);
     //debugger
     await contract.deploy([
-      this.nftData.get('nftBaseUrl').value,
+      this.nftData.get('nftName').value,
       this.nftData.get('nftSymbol').value
     ]); 
 
@@ -125,8 +129,7 @@ export class FormLayoutsComponent {
         "Test"
     ]); */
 
-    this.aeService.deployedNftAddress = contract.deployInfo.address;
-    this.showSpinnerOnMintButton = false;
+ 
     console.log(`Contract successfully deployed!`);
     console.log(`Contract address: ${contract.deployInfo.address}`);
     console.log(`Tx-Hash: ${contract.deployInfo.txData.hash}`);
@@ -137,6 +140,7 @@ export class FormLayoutsComponent {
     // mint
     for(let i=0; i<nfts.length; i++) {
         const nftMetadataMapStringValues = new Map(Object.entries(nfts[i]).map(([k, v]) => [k, typeof v === 'object' ? JSON.stringify(v) : v]));
+        console.log("Feeding the contract:", nftMetadataMapStringValues)
         const tx = await contract.methods.mint(
             senderAddress,
             {'MetadataMap': [nftMetadataMapStringValues]}
@@ -147,6 +151,8 @@ export class FormLayoutsComponent {
         console.log(`------------------------------------------------------------------------------------------`);
         console.log(`------------------------------------------------------------------------------------------`);
     };
+    this.aeService.deployedNftAddress = contract.deployInfo.address;
+    this.showSpinnerOnMintButton = false;
 
   }
  

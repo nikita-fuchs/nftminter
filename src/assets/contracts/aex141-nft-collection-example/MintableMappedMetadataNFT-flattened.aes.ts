@@ -20,7 +20,8 @@ contract interface IAEX141 =
         { name: string
         , symbol: string
         , base_url: option(string)
-        , metadata_type : metadata_type }
+        , metadata_type : metadata_type
+        }
 
     entrypoint aex141_extensions : () => list(string)
     entrypoint meta_info : () => meta_info
@@ -52,7 +53,7 @@ contract MintableMappedMetadataNFT =
         { name: string
         , symbol: string
         , base_url: option(string)
-        , metadata_type : metadata_type }
+        , metadata_type : metadata_type}
     
     record state =
         { owner: address
@@ -83,6 +84,10 @@ contract MintableMappedMetadataNFT =
             Some(MetadataIdentifier(_)) => abort("NOT_METADATA_MAP")
             Some(v) =>
                 let token_id = state.counter
+                let timestamped_metadata =
+                    switch(v)
+                        MetadataMap(v) => MetadataMap(v{["minted"]=Int.to_str(Chain.timestamp)})
+
                 put(state{counter = state.counter + 1, balances[owner = 0] @ b = b + 1, owners[token_id] = owner, metadata[token_id] = v})
                 let from = ak_11111111111111111111111111111111273Yts
                 switch(invoke_nft_receiver(from, owner, token_id, data))

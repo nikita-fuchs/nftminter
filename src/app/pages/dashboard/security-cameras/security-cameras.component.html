@@ -4,7 +4,7 @@
 
   <nb-card-header>
 
-    NFT Preview  &nbsp; <nb-icon class="centerIcon" [icon]="'question-mark-circle-outline'" pack="eva" nbPopover="The preview does not represent the real size of your NFT." nbPopoverTrigger="hover" nbPopoverPlacement="right"></nb-icon>
+    NFT Preview  &nbsp; <nb-icon *ngIf="helpMessage" class="centerIcon" [icon]="'question-mark-circle-outline'" pack="eva" nbPopover="{{helpMessage}}" nbPopoverTrigger="hover" nbPopoverPlacement="right"></nb-icon>
 
     <!-- 
     <button class="single-view-button"

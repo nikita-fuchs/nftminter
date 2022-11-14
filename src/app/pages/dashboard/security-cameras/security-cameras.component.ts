@@ -23,6 +23,7 @@ export class SecurityCamerasComponent implements OnInit, OnDestroy, OnChanges {
   /* NFT info start*/
   @Input() nftBaseUrl : string 
   @Input() nftName : string = ""
+  @Input() helpMessage : string = ""
 
   nftCheckedImageLink = "" // only to be used once the content type of the NFT media query is checked
   // @Output() urlCheckInfo = new EventEmitter<urlCheckInfo>();

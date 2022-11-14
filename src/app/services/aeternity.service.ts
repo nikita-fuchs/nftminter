@@ -7,8 +7,13 @@ import {
   SUBSCRIPTION_TYPES,
   AE_AMOUNT_FORMATS
 } from '@aeternity/aepp-sdk/dist/aepp-sdk.browser.js';
+
+import { AeSdk, Node } from "@aeternity/aepp-sdk";
+
+
 import { environment } from '../../environments/environment';
 import { Observable, of} from 'rxjs';
+const aex141Aci = require('../../assets/contracts/aex141-nft-collection-example/MintableMappedMetadataNFT-flattened-aci.json')
 const { projectName, networkId, nodeUrl, nodeCompilerUrl } =
   environment;
 
@@ -22,7 +27,7 @@ const { projectName, networkId, nodeUrl, nodeCompilerUrl } =
   providedIn: 'root',
 })
 export class AeternityService {
-  aeSdk?: AeSdkAepp;
+  aeSdk?: AeSdk;
   sdkState: {
     error?: string,
     address?: `ak_${string}`,
@@ -41,6 +46,15 @@ export class AeternityService {
     const onNetworkChange = (params : any ) => {
       this.showWalletInfo(params.networkId);
     };
+
+    this.initSDK(onNetworkChange)
+    .then( async ({walletNetworkId, aeSdk} : {walletNetworkId: string, aeSdk: any}) => {
+      this.aeSdk = aeSdk;
+      console.log("Initialised sdk");
+
+      const test = await this.showWalletInfo(walletNetworkId);
+
+  });
 
   }
 
@@ -95,6 +109,28 @@ export class AeternityService {
     return { walletNetworkId, aeSdk: this.aeSdk};
   }
 
+  async readNftDataFrom(contractAddress: string){
+    const contract = await this.aeSdk.getContractInstance({
+      aci: aex141Aci,
+      contractAddress: contractAddress,
+    });
+
+
+    let metaInfo = await contract.methods
+      .meta_info()
+      .then((res) => res.decodedResult);
+
+    let nfts = await Promise.all(
+      [...new Array(1)].map(async (_, i) => {
+        const { decodedResult: metadata } = await contract.methods.metadata(
+          i + 1
+        );
+        }
+      ))
+    
+    }
+
+debugger
   async scanForWallet(): Promise<string> {
     return new Promise((resolve) => {
       if (!this.aeSdk) throw new Error('Failed! SDK not initialized.');

@@ -20,7 +20,9 @@ contract interface IAEX141 =
         { name: string
         , symbol: string
         , base_url: option(string)
-        , metadata_type : metadata_type }
+        , metadata_type : metadata_type 
+        , minted_at : Chain.timestamp
+    }
 
     datatype event 
         = Transfer(address, address, int)
