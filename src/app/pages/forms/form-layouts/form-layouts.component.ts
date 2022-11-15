@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Camera, SecurityCamerasData } from '../../../@core/data/security-cameras';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormControl, UntypedFormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { AeternityService } from '../../../services/aeternity.service';
 import { aex141nft } from '../../../interfaces/NFT';
 import { aex141nftContract } from '../../../../assets/contracts/aex141-nft-collection-example/MintableMappedMetadataNFT-flattened.aes'
@@ -26,14 +26,14 @@ export class FormLayoutsComponent {
 
 
   /* dApp related start */
-  nftData: FormGroup;
+  nftData: UntypedFormGroup;
   contractTypeOption = 'basic' // needs to correspond the default active contract type
   contractTypes = [
     { label: 'Basic NFT', value: 'basic', checked: true },
     { label: 'Mintable / Burnable', value: 'mintable' },
   ];
 
-  aeSdk : any
+
   /* dApp related end  */
 
   constructor(
@@ -58,11 +58,11 @@ export class FormLayoutsComponent {
   }
 
   ngOnInit() {
-    this.nftData = new FormGroup({
-      nftName: new FormControl("", [Validators.required]),
-      nftBaseUrl: new FormControl("", [Validators.required, this.urlRegexCheck()]),
-      nftSymbol: new FormControl("", [Validators.required]),
-      nftDescription: new FormControl("", [Validators.required]),
+    this.nftData = new UntypedFormGroup({
+      nftName: new UntypedFormControl("", [Validators.required]),
+      nftBaseUrl: new UntypedFormControl("", [Validators.required, this.urlRegexCheck()]),
+      nftSymbol: new UntypedFormControl("", [Validators.required]),
+      nftDescription: new UntypedFormControl("", [Validators.required]),
     })
 
     // setInterval(()=> {console.log(this.contractTypeOption)},3000)
@@ -114,7 +114,7 @@ export class FormLayoutsComponent {
     const source = aex141nftContract;
 
     console.log("Compiling....");
-    const contract = await this.aeSdk.getContractInstance({ source });
+    const contract = await this.aeService.aeSdk.getContractInstance({ source });
 
     // deploy
     console.log("Deploying with: ",this.nftData.get('nftBaseUrl').value, this.nftData.get('nftSymbol').value);

@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
-import {
-  AeSdkAepp,
-  Node,
-  walletDetector,
+/* import {
   BrowserWindowMessageConnection,
   SUBSCRIPTION_TYPES,
   AE_AMOUNT_FORMATS
 } from '@aeternity/aepp-sdk/dist/aepp-sdk.browser.js';
-
-import { AeSdk, Node } from "@aeternity/aepp-sdk";
+ */
+import { AeSdkAepp, Node, walletDetector, BrowserWindowMessageConnection, AE_AMOUNT_FORMATS, SUBSCRIPTION_TYPES } from "@aeternity/aepp-sdk";
 
 
 import { environment } from '../../environments/environment';
@@ -27,7 +24,7 @@ const { projectName, networkId, nodeUrl, nodeCompilerUrl } =
   providedIn: 'root',
 })
 export class AeternityService {
-  aeSdk?: AeSdk;
+  aeSdk?: AeSdkAepp;
   sdkState: {
     error?: string,
     address?: `ak_${string}`,
@@ -48,7 +45,7 @@ export class AeternityService {
     };
 
     this.initSDK(onNetworkChange)
-    .then( async ({walletNetworkId, aeSdk} : {walletNetworkId: string, aeSdk: any}) => {
+    .then( async ({walletNetworkId, aeSdk} : {walletNetworkId: string, aeSdk: AeSdkAepp}) => {
       this.aeSdk = aeSdk;
       console.log("Initialised sdk");
 
@@ -94,11 +91,11 @@ export class AeternityService {
         {
           name: networkId,
           instance: new Node(nodeUrl),
-          // instance: new Node('http://dontfetchme.de'),
         },
       ],
       compilerUrl: nodeCompilerUrl,
       onAddressChange:  ({ current }) => console.log('new address'),
+      // TODO: adjust view to display change
       onNetworkChange,
       onDisconnect: () => {
         return new Error('Disconnected');
@@ -110,10 +107,11 @@ export class AeternityService {
   }
 
   async readNftDataFrom(contractAddress: string){
-    const contract = await this.aeSdk.getContractInstance({
+    const contract = await this.aeSdk!.getContractInstance({
       aci: aex141Aci,
       contractAddress: contractAddress,
     });
+    debugger
 
 
     let metaInfo = await contract.methods
@@ -130,7 +128,7 @@ export class AeternityService {
     
     }
 
-debugger
+
   async scanForWallet(): Promise<string> {
     return new Promise((resolve) => {
       if (!this.aeSdk) throw new Error('Failed! SDK not initialized.');
