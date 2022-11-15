@@ -111,7 +111,6 @@ export class AeternityService {
       aci: aex141Aci,
       contractAddress: contractAddress,
     });
-    debugger
 
 
     let metaInfo = await contract.methods
