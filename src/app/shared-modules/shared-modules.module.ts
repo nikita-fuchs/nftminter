@@ -4,7 +4,7 @@ import { MatIconModule,  } from '@angular/material/icon';
 import {
   NbSpinnerModule,
 } from '@nebular/theme';
-import {MatInputModule} from '@angular/material/input';
+import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
 
 
 const materialModules = [
