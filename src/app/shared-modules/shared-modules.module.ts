@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIconModule,  } from '@angular/material/icon';
 import {
   NbSpinnerModule,
 } from '@nebular/theme';
+import {MatInputModule} from '@angular/material/input';
+
 
 const materialModules = [
-  MatIconModule
+  MatIconModule,
+  MatInputModule
 ];
 
 @NgModule({

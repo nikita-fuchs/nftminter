@@ -7,6 +7,19 @@
   justify-content: space-between;
   width: 100%;
 
+  /* replace behaviour of non-working angular material input start */
+
+  // line at bottom
+  ::ng-deep .mat-form-field-infix {
+    border-bottom: 2px solid #ffffff;
+  }
+
+  //place holder when mouse focused
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: pink!important;
+  }
+  /* mat fix end  */
+
   .logo-container {
     display: flex;
     align-items: center;
