@@ -4,7 +4,7 @@ import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { AbstractControl, UntypedFormControl, UntypedFormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { AeternityService } from '../../../services/aeternity.service';
-import { aex141nft } from '../../../interfaces/NFT';
+// import { aex141nft } from '../../../interfaces/NFT';
 import { aex141nftContract } from '../../../../assets/contracts/aex141-nft-collection-example/MintableMappedMetadataNFT-flattened.aes'
 
 @Component({
@@ -110,18 +110,20 @@ export class FormLayoutsComponent {
 
     const senderAddress = await this.aeService.sdkState.address;
 
-    const CONTRACT = './../../../../assets/contracts/aex141-nft-collection-example/MintableMappedMetadataNFT-flattened.aes';
+    // const CONTRACT = './../../../../assets/contracts/aex141-nft-collection-example/MintableMappedMetadataNFT-flattened.aes';
     const source = aex141nftContract;
 
     console.log("Compiling....");
     const contract = await this.aeService.aeSdk.getContractInstance({ source });
+    debugger
 
     // deploy
-    console.log("Deploying with: ",this.nftData.get('nftBaseUrl').value, this.nftData.get('nftSymbol').value);
+    console.log("Deploying with: ",this.nftData.get('nftBaseUrl').value, this.nftData.get('nftSymbol').value, 1);
     //debugger
     await contract.deploy([
       this.nftData.get('nftName').value,
-      this.nftData.get('nftSymbol').value
+      this.nftData.get('nftSymbol').value,
+      1 // "token limit - harcode for now
     ]); 
 
 /*     await contract.deploy([

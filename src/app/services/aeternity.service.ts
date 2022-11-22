@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 } from '@aeternity/aepp-sdk/dist/aepp-sdk.browser.js';
  */
 import { AeSdkAepp, Node, walletDetector, BrowserWindowMessageConnection, AE_AMOUNT_FORMATS, SUBSCRIPTION_TYPES } from "@aeternity/aepp-sdk";
-
+import { aex141nftContract } from '../../assets/contracts/aex141-nft-collection-example/MintableMappedMetadataNFT-flattened.aes'
 
 import { environment } from '../../environments/environment';
 import { Observable, of} from 'rxjs';
@@ -107,6 +107,10 @@ export class AeternityService {
   }
 
   async readNftDataFrom(contractAddress: string){
+    // const contract = await this.aeSdk.getContractInstance({ address: contractAddress, source: aex141nftContract });
+    
+    // const aci = await this.aeSdk!.
+
     const contract = await this.aeSdk!.getContractInstance({
       aci: aex141Aci,
       contractAddress: contractAddress,

@@ -23,10 +23,10 @@ export class DatepickerComponent {
     this.min = this.dateService.addDay(this.dateService.today(), -5);
     this.max = this.dateService.addDay(this.dateService.today(), 5);
 
-    setTimeout(() => {
+/*     setTimeout(() => {
   aeService.readNftDataFrom("ct_2GXBBp9BdAytxRPDYropAKUQJxgeZBiufuktBbPxB3dk2JGUWR")
   
-}, 3000);
+}, 3000); */
 
   }
 }
