@@ -6,10 +6,7 @@ import {
   BrowserWindowMessageConnection,
   SUBSCRIPTION_TYPES,
   AE_AMOUNT_FORMATS
-} from '@aeternity/aepp-sdk/dist/aepp-sdk.browser.js';
-
-import { AeSdk, Node } from "@aeternity/aepp-sdk";
-
+} from '@aeternity/aepp-sdk';
 
 import { environment } from '../../environments/environment';
 import { Observable, of} from 'rxjs';
@@ -27,7 +24,7 @@ const { projectName, networkId, nodeUrl, nodeCompilerUrl } =
   providedIn: 'root',
 })
 export class AeternityService {
-  aeSdk?: AeSdk;
+  aeSdk?: AeSdkAepp;
   sdkState: {
     error?: string,
     address?: `ak_${string}`,
@@ -71,11 +68,11 @@ export class AeternityService {
       return;
     }
 
-    this.sdkState.address = await this.aeSdk.address();
+    this.sdkState.address = await this.aeSdk.address;
     this.sdkState.balance = await this.aeSdk.getBalance(this.sdkState.address, {
       format: AE_AMOUNT_FORMATS.AE,
     });
-    this.sdkState.height = await this.aeSdk.height();
+    this.sdkState.height = await this.aeSdk.getHeight();
     console.log(this.sdkState);
    
     // this.sdkState.nodeUrl = (await this.aeSdk.getNodeInfo()).url;
@@ -110,19 +107,22 @@ export class AeternityService {
   }
 
   async readNftDataFrom(contractAddress: string){
-    const contract = await this.aeSdk.getContractInstance({
+    const contract = await this.aeSdk.initializeContract<{
+      meta_info: () => any,
+      metadata: (n: number) => any,
+    }>({
       aci: aex141Aci,
-      contractAddress: contractAddress,
+      address: contractAddress,
     });
 
 
-    let metaInfo = await contract.methods
+    let metaInfo = await contract
       .meta_info()
       .then((res) => res.decodedResult);
 
     let nfts = await Promise.all(
       [...new Array(1)].map(async (_, i) => {
-        const { decodedResult: metadata } = await contract.methods.metadata(
+        const { decodedResult: metadata } = await contract.metadata(
           i + 1
         );
         }
